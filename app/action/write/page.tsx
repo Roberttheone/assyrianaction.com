@@ -1,0 +1,41 @@
+'use client'
+import { useEffect, useMemo, useState } from 'react'
+import recipients from '../../data/recipients.json'
+type Target={name:string,email:string}; type Grouped={ [k:string]:Target[] }
+const template=(country:string)=>`Subject: Recognition and protection of Indigenous Assyrians under UNDRIP
+
+Dear Representative,
+
+I am writing from ${country} to urge action in support of Indigenous Assyrians in their ancestral homelands. UNDRIP articulates standards for self‑determination, language revitalization, and protection of culture and heritage.
+
+We ask that ${country}'s Government:
+1) Affirm the applicability of UNDRIP to Indigenous Assyrians;
+2) Support Neo‑Aramaic/Assyrian language & cultural programs and safeguard heritage sites (Nineveh, Ashur, Nimrud);
+3) Prioritize at‑risk Assyrian communities in foreign policy and assistance.
+
+Sincerely,
+[Your name]
+[City]`
+export default function Page(){
+  const [country,setCountry]=useState<'AU'|'UK'|'US'|'OTHER'>('AU')
+  const [targets,setTargets]=useState<Grouped>({}); const [extra,setExtra]=useState('')
+  const [body,setBody]=useState(template('Australia'))
+  useEffect(()=>{ const label=country==='AU'?'Australia':country==='UK'?'United Kingdom':country==='US'?'United States':'Your Country'
+    setBody(template(label)); if(country==='OTHER'){setTargets({})}else{ // @ts-ignore
+      const preset=(recipients as any)[country]; setTargets((preset?.groups||{}) as Grouped) } },[country])
+  const allEmails=useMemo(()=>{ const preset=Object.values(targets).flat().map(t=>t.email)
+    const extraList=extra?extra.split(/[;,]+/).map(s=>s.trim()).filter(Boolean):[]; return [...preset,...extraList]},[targets,extra])
+  const mailto=useMemo(()=>{ const params=new URLSearchParams({subject:'Recognition and protection of Indigenous Assyrians under UNDRIP',body})
+    return `mailto:${allEmails.join(',')}?${params.toString()}` },[allEmails,body])
+  return (<div style={{maxWidth:860}}>
+    <h1 style={{fontSize:24,fontWeight:700}}>Write to your MP/Minister</h1>
+    <label>Country<br/><select value={country} onChange={e=>setCountry(e.target.value as any)}>
+      <option value="AU">Australia</option><option value="UK">United Kingdom</option><option value="US">United States</option><option value="OTHER">Other</option>
+    </select></label>
+    {!!Object.keys(targets).length && (<div style={{marginTop:8}}>{Object.entries(targets).map(([g,list])=>(<div key={g}><b>{g}</b><ul>{list.map(t=>(<li key={t.email}>{t.name} &lt;{t.email}&gt;</li>))}</ul></div>))}</div>)}
+    <div style={{marginTop:8}}><label>Add more recipients<br/><input placeholder="name@parliament.gov..." value={extra} onChange={e=>setExtra(e.target.value)} style={{width:'100%'}}/></label></div>
+    <div style={{marginTop:8}}><label>Letter<br/><textarea value={body} onChange={e=>setBody(e.target.value)} style={{width:'100%',height:260}}/></label></div>
+    <div style={{marginTop:8}}><a href={mailto} style={{padding:'8px 14px',background:'black',color:'white',borderRadius:10,display:'inline-block'}}>Open in email client</a></div>
+    <p style={{fontSize:12,color:'#64748b'}}>API multi‑send coming next (Postmark/SendGrid).</p>
+  </div>)
+}

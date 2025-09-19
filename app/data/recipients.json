@@ -1,0 +1,53 @@
+{
+  "AU": {
+    "country": "Australia",
+    "groups": {
+      "Ministries": [
+        {
+          "name": "Minister for Foreign Affairs",
+          "email": "REPLACE@dfat.gov.au"
+        }
+      ],
+      "Parliament": [
+        {
+          "name": "Chair, JS Committee on Foreign Affairs",
+          "email": "REPLACE@aph.gov.au"
+        }
+      ]
+    }
+  },
+  "UK": {
+    "country": "United Kingdom",
+    "groups": {
+      "FCDO": [
+        {
+          "name": "Minister for the Middle East",
+          "email": "REPLACE@fcdo.gov.uk"
+        }
+      ],
+      "Parliament": [
+        {
+          "name": "Chair, Foreign Affairs Committee",
+          "email": "REPLACE@parliament.uk"
+        }
+      ]
+    }
+  },
+  "US": {
+    "country": "United States",
+    "groups": {
+      "Senate": [
+        {
+          "name": "SFRC Majority Staff",
+          "email": "REPLACE@foreign.senate.gov"
+        }
+      ],
+      "House": [
+        {
+          "name": "HFAC Majority Staff",
+          "email": "REPLACE@mail.house.gov"
+        }
+      ]
+    }
+  }
+}
