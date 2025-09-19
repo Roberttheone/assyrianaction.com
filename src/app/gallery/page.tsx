@@ -1,4 +1,7 @@
-import data from "../data/gallery.json";
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
+import data from "../data/gallery"; // or "../data/gallery.json" if you stayed on JSON
 
 type Item = { title:string; image:string; creditUrl:string; blurb?:string };
 
@@ -8,13 +11,12 @@ export default function Gallery(){
     <div>
       <h1 style={{fontSize:26,fontWeight:800}}>Gallery</h1>
       <p style={{color:'#475569', marginTop:4}}>
-        Museum/Commons images with proper attributions. Add more via <code>src/app/data/gallery.json</code>.
+        Museum/Commons images with proper attributions. Add more via <code>src/app/data/gallery.ts</code>.
       </p>
 
       <div style={{display:'grid',gap:16,gridTemplateColumns:'repeat(auto-fill,minmax(260px,1fr))',marginTop:12}}>
         {items.map((img, i) => (
           <figure key={i} style={{background:'#fff',padding:12,borderRadius:16,boxShadow:'0 1px 8px rgba(0,0,0,.06)'}}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={img.image}
               alt={img.title}
