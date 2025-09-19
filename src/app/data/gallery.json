@@ -16,13 +16,5 @@
     "image": "https://images.metmuseum.org/CRDImages/an/original/DP375421.jpg",
     "creditUrl": "https://www.metmuseum.org/art/collection/search/322613",
     "blurb": "Palace relief from Kalhu (Nimrud), 9th century BCE."
-  },
-
-  /* --- Add more below this line as you like --- */
-  {
-    "title": "Add more… (paste a new object)",
-    "image": "/images/your-local-file.jpg",
-    "creditUrl": "#",
-    "blurb": "Tip: upload files into /public/images and reference them like /images/your-local-file.jpg"
   }
 ]
