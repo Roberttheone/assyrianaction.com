@@ -1,5 +1,1 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: { appDir: false },
-};
-export default nextConfig;
+export default { images:{ remotePatterns:[{protocol:'https',hostname:'images.metmuseum.org'},{protocol:'https',hostname:'upload.wikimedia.org'}] } }
