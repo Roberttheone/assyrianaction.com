@@ -2,7 +2,7 @@ import "./globals.css";
 import AssyrianStar from "./components/AssyrianStar"; // keep the animated star you added
 
 export const metadata = {
-  title: "Assyrian Voice",
+  title: "Assyrian Action",
   description: "Culture, history, timeline & action hub for Indigenous Assyrians."
 };
 
