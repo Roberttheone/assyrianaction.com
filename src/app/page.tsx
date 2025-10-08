@@ -1,3 +1,18 @@
+<section style={{
+  borderRadius:16, overflow:'hidden', background:'#0b1020',
+  backgroundImage:'linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.65)), url(https://images.metmuseum.org/CRDImages/an/original/DP120929.jpg)',
+  backgroundSize:'cover', backgroundPosition:'center', color:'#fff', padding:'48px 20px', marginBottom:16
+}}>
+  <h1 style={{fontSize:36, fontWeight:900, letterSpacing:-0.5}}>Assyrian Action</h1>
+  <p style={{maxWidth:720, marginTop:8, opacity:.95}}>
+    Advocate for recognition, language preservation, and protection of Nineveh, Ashur, and Nimrud.
+  </p>
+  <div style={{display:'flex', gap:12, marginTop:12, flexWrap:'wrap'}}>
+    <a className="btn" href="/action/write">Write to Your Representatives</a>
+    <a className="btn" href="/gallery" style={{background:'transparent', border:'1px solid #fff'}}>View Gallery</a>
+  </div>
+</section>
+
 export default function Home(){
   return (
     <div className="grid" style={{gap:16}}>
