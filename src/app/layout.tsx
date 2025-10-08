@@ -1,5 +1,13 @@
 import "./globals.css";
-import Logo from "./components/Logo";
+import AssyrianStar from "./components/AssyrianStar";
+
+...
+
+<a href="/" style={{display:'inline-flex',alignItems:'center',gap:10}}>
+  <AssyrianStar size={30}/>
+  <span style={{fontWeight:800}}>Assyrian Action</span> {/* or Assyrian Voice */}
+</a>
+
 
 export const metadata = {
   title: "Assyrian Action",
