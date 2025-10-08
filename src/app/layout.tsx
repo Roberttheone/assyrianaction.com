@@ -1,17 +1,9 @@
 import "./globals.css";
-import AssyrianStar from "./components/AssyrianStar";
-
-...
-
-<a href="/" style={{display:'inline-flex',alignItems:'center',gap:10}}>
-  <AssyrianStar size={30}/>
-  <span style={{fontWeight:800}}>Assyrian Action</span> {/* or Assyrian Voice */}
-</a>
-
+import AssyrianStar from "./components/AssyrianStar"; // keep the animated star you added
 
 export const metadata = {
-  title: "Assyrian Action",
-  description: "Advocacy hub for Indigenous Assyrian rights and heritage."
+  title: "Assyrian Voice",
+  description: "Culture, history, timeline & action hub for Indigenous Assyrians."
 };
 
 const NavLink = ({href, children}:{href:string;children:React.ReactNode}) =>
@@ -21,26 +13,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <header style={{background:'#fff',borderBottom:'1px solid #e2e8f0'}}>
-          <div style={{maxWidth:1040,margin:'0 auto',padding:'12px 24px',display:'flex',justifyContent:'space-between',alignItems:'center',gap:12,flexWrap:'wrap'}}>
-            <a href="/"><Logo /></a>
-            <nav style={{display:'flex',gap:14,fontSize:14}}>
-              <NavLink href="/action/write">Write</NavLink>
-              <NavLink href="/campaigns">Campaigns</NavLink>
-              <NavLink href="/undrip">UNDRIP</NavLink>
+        <header className="header">
+          <div className="container" style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:12,flexWrap:'wrap'}}>
+            <a href="/" style={{display:'inline-flex',alignItems:'center',gap:10}}>
+              <AssyrianStar size={28}/>
+              <span style={{fontWeight:800, color:'#e5e7eb'}}>Assyrian Voice</span>
+            </a>
+            <nav className="nav" style={{display:'flex',gap:14,fontSize:14}}>
+              <NavLink href="/voice/timeline">Timeline</NavLink>
+              <NavLink href="/voice/signon">Sign-On</NavLink>
+              <NavLink href="/donate">Donate</NavLink>
               <NavLink href="/gallery">Gallery</NavLink>
-              {/* Cross-site link to Voice */}
-              <a className="btn" href="https://assyrianvoice.org/" target="_blank" rel="noreferrer">Learn & Donate</a>
+              <NavLink href="/learn">Learn</NavLink>
+              <a className="btn" href="https://assyrianaction.com/" target="_blank" rel="noreferrer">Write to Reps</a>
             </nav>
           </div>
         </header>
-        <main style={{maxWidth:1040,margin:'0 auto',padding:'24px'}}>{children}</main>
-        <footer style={{borderTop:'1px solid #e2e8f0',padding:'16px 24px',background:'#fff'}}>
-          <div style={{maxWidth:1040,margin:'0 auto',fontSize:12,color:'#64748b'}}>
-            © {new Date().getFullYear()} Assyrian Action · Images © respective museums (credits on Gallery)
-          </div>
+        <main className="container" style={{paddingTop:24, paddingBottom:24}}>{children}</main>
+        <footer className="container" style={{borderTop:'1px solid rgba(148,163,184,.2)',padding:'16px 24px',opacity:.9}}>
+          <div style={{fontSize:12,color:'#cbd5e1'}}>© {new Date().getFullYear()} Assyrian Voice · Images © respective museums (credits on page)</div>
         </footer>
       </body>
     </html>
   );
 }
+
